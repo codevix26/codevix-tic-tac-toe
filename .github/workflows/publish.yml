@@ -1,0 +1,35 @@
+name: Publish to npm
+
+# Yeh line GitHub me "Run Workflow" ka button add karti hai
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build the Project
+        run: pnpm build
+
+      - name: Publish to npm
+        run: npm publish --access public
+        env:
+          # Yeh token aapko GitHub Secrets me daalna hoga (NPM_TOKEN naam se)
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

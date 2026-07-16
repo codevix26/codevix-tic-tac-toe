@@ -1,0 +1,39 @@
+{
+  "name": "codevix-tic-tac-toe",
+  "version": "1.0.0",
+  "description": "A beautiful terminal-based Tic Tac Toe game",
+  "main": "dist/index.js",
+  "bin": "./dist/index.js",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsup src/index.ts --format esm --minify",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "tic-tac-toe",
+    "cli",
+    "terminal-game",
+    "nodejs",
+    "typescript"
+  ],
+  "author": "codevix26",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "clear": "^0.1.0",
+    "cli-table3": "^0.6.5",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/clear": "^0.1.4",
+    "@types/node": "^26.1.1",
+    "@types/prompts": "^2.4.9",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2"
+  }
+}
