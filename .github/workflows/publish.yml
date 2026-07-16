@@ -1,6 +1,5 @@
 name: Publish to npm
 
-# Yeh line GitHub me "Run Workflow" ka button add karti hai
 on:
   workflow_dispatch:
 
@@ -14,6 +13,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
+          version: 9
           run_install: false
 
       - name: Setup Node.js
@@ -31,5 +31,4 @@ jobs:
       - name: Publish to npm
         run: npm publish --access public
         env:
-          # Yeh token aapko GitHub Secrets me daalna hoga (NPM_TOKEN naam se)
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
